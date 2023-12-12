@@ -29,6 +29,11 @@ return {
     requires = { 'kyazdani42/nvim-web-devicons', opt = true },
     options = { theme = 'dracula' },
   },
+  {
+    'akinsho/bufferline.nvim', 
+    version = "*", 
+    dependencies = 'nvim-tree/nvim-web-devicons',
+  },
   'tpope/vim-fugitive',
   { -- 選択した部分をコメントアウト
     'tomtom/tcomment_vim',
