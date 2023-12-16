@@ -1,3 +1,12 @@
 {
-  "coc.preferences.formatOnSave": true
+	"//coc.preferences.formatOnSave": true,
+	"coc.preferences.formatOnType": true,
+	"languageserver": {
+		"bash":{
+		 "command": "bash-language-server",
+		 "args": ["start"],
+		 "filetypes": ["sh"],
+		 "ignoredRootPaths": ["~"]
+		}
+	}
 }

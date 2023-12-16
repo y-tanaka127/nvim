@@ -7,8 +7,11 @@ vim.api.nvim_set_var('mapleader', ' ')
 -- jjでESC
 map('i', 'jj', '<ESC>', opts)
 
+-- ctrl+sで上書き保存
+map('n', '<C-s>', ':w<CR>', opts)
+
 -- F3でハイライトを消す
-map('n', '<F3>', ':noh<Enter>', opts)
+map('n', '<F3>', ':noh<CR>', opts)
 
 -- 行内でもj,kで移動可能
 map('n', 'j', 'gj', opts)
@@ -19,13 +22,8 @@ map('n', '<Up>', 'gk', opts)
 -- <space>+aで全選択
 map('n', '<Leader>a', 'ggVG', opts)
 
--- 下分割でターミナルモードを起動
-map('n', '<Leader>t', '<cmd>belowright new<CR><cmd>terminal<CR>', opts)
-
--- <ESC>でターミナルモードから抜ける
-map('t', '<ESC>', '<C-\\><C-n>', opts)
-
-map('n', '<F1>', ':edit $MYVIMRC<CR>', opts)
+-- <space>+<F12>でコンフィグファイルを開く
+map('n', '<Leader><F12>', ':Fern ~/.config/nvim -reveal=% -drawer -toggle -width=30<CR>', opts)
 
 -- 画面分割
 map('n', 'ss', ':split<Return><C-w>w', opts)
@@ -38,14 +36,31 @@ map('n', 'sj', '<C-w>j', opts)
 map('n', 'sl', '<C-w>l', opts)
 
 -- tabline
-map("n", "<C-n>", ":bnext<Return>", opts)
-map("n", "<C-p>", ":bprevious<Return>", opts)
+map("n", "<C-l>", ":bnext<Return>", opts)
+map("n", "<C-h>", ":bprevious<Return>", opts)
 
 -- colorcheck
 map("n", "<Leader>0", ':ColorizerToggle<CR>', opts)
+
 -- telescope
--- local builtin = require('telescope.builtin')
--- vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
--- vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
--- vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
--- vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+map('n', '<C-p>p', ':Telescope find_files<CR>', opts)
+map('n', '<C-p>l', ':Telescope live_grep<CR>', opts)
+map('n', '<C-p>b', ':Telescope buffers<CR>', opts)
+map('n', '<C-p>h', ':Telescope help_tags<CR>', opts)
+
+-- coc補完時にtabで選択
+local copts = { silent = true, noremap = true, expr = true, replace_keycodes = false }
+map('i', '<TAB>', 'coc#pum#visible() ? coc#pum#next(1) : "<Tab>"', copts)
+map('i', '<S-TAB>', [[coc#pum#visible() ? coc#pum#prev(1) : '<C-h>']], copts)
+map('i', '<CR>', [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], copts)
+-- Fern
+map('n', '<Leader>e', ':Fern . -reveal=% -drawer -toggle -width=30<CR>', opts)
+
+-- 下分割でターミナルモードを起動
+map('n', "<C-t>", ':ToggleTerm direction=horizontal<CR>', opts)
+map('n', '<C-t>f', ':ToggleTerm direction=float<CR>', opts)
+map('t', '<C-t>', '<ESC><CR> :ToggleTerm<CR>', opts)
+-- map('t', '<C-t>', [[<C-\><C-n>]], opts)
+
+-- <ESC>でターミナルモードから抜ける
+map('t', '<ESC>', '<C-\\><C-n>', opts)
