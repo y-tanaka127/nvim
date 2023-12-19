@@ -110,5 +110,11 @@ return {
 	},
 	{
 		'windwp/nvim-autopairs',
+  },
+	{
+		'vim-denops/denops.vim',
+  },
+	{
+		'skanehira/denops-silicon.vim',
 	}
 }

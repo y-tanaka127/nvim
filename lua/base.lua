@@ -25,7 +25,7 @@ vim.o.helplang = 'ja'
 vim.o.laststatus = 3
 
 -- クリップボード共有
-vim.opt.clipboard:append({ "unnamedplus" }) -- レジスタとクリップボードを共有
+-- vim.opt.clipboard:append({ "unnamedplus" }) -- レジスタとクリップボードを共有
 
 -- マウス操作OFF
 vim.o.mouse = true

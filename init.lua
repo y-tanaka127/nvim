@@ -15,7 +15,7 @@ plugins = require('plugins')
 
 require("base")
 require("key")
-require('lazy').setup('plugins')
+require('lazy').setup(plugins)
 require('lualine').setup {
 	options = {
 		icons_enabled = true,
@@ -122,16 +122,3 @@ require("noice").setup({
 	},
 })
 
--- cursorline setting
-require('nvim-cursorline').setup {
-	cursorline = {
-		enable = true,
-		timeout = 1000,
-		number = false,
-	},
-	cursorword = {
-		enable = true,
-		min_length = 3,
-		hl = { underline = true },
-	}
-}
